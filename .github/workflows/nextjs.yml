@@ -42,6 +42,8 @@ jobs:
           pip install -r requirements.txt
 
       - name: Run Python script
+        env:
+          BALLDONTLIEAPI_KEY: ${{ secrets.BALLDONTLIEAPI_KEY }}
         run: python scripts/fetch-team-data.py
 
       # Upload the file the script produced
