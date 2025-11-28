@@ -28,3 +28,6 @@ def parse_teams():
   except Exception as e:
     print(f"ERROR: {e}")
     raise
+
+if __name__ == "__main__":
+    parse_teams()
