@@ -38,9 +38,8 @@ jobs:
 
       - name: Install Python dependencies
         run: |
-          if [ -f requirements.txt ]; then
-            pip install -r requirements.txt
-          fi
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
 
       - name: Run Python script
         run: python scripts/fetch-team-data.py
