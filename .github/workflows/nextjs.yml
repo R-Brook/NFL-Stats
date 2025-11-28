@@ -52,7 +52,7 @@ jobs:
         with:
           name: python-output
           # File the script produces
-          path: scripts/qb-data.ts
+          path: scripts/team-data.ts
 
   # Build job
   build:
@@ -70,14 +70,14 @@ jobs:
           path: ./python-output
 
       # File is now available at:
-      # ./python-output/qb-data.json
+      # ./python-output/team-data.ts
       #
       # If Next.js needs it in a specific place (e.g. public/data/),
       # you can move or copy it:
       - name: Move Python output into project
         run: |
           mkdir -p public/data
-          cp ./python-output/qb-data.json public/data/qb-data.json
+          cp ./python-output/team-data.ts public/data/team-data.ts
 
       - name: Detect package manager
         id: detect-package-manager
