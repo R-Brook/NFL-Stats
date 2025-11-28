@@ -76,8 +76,7 @@ jobs:
       # you can move or copy it:
       - name: Move Python output into project
         run: |
-          mkdir -p public/data
-          cp ./python-output/team-data.ts public/data/team-data.ts
+          cp ./python-output/team-data.ts scripts/team-data.ts
 
       - name: Detect package manager
         id: detect-package-manager
