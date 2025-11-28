@@ -1,6 +1,4 @@
-# Sample workflow for building and deploying a Next.js site to GitHub Pages
-#
-# To get started with Next.js see: https://nextjs.org/docs/getting-started
+# Build and deploy a Next.js site to GitHub Pages
 #
 name: Deploy Next.js site to Pages
 
@@ -25,12 +23,61 @@ concurrency:
   cancel-in-progress: false
 
 jobs:
+  # Data fetch
+  data_fetch:
+    name: Run Python Script
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install Python dependencies
+        run: |
+          if [ -f requirements.txt ]; then
+            pip install -r requirements.txt
+          fi
+
+      - name: Run Python script
+        run: python scripts/fetch-qb-data.py
+
+      # Upload the file the script produced
+      - name: Upload Python output
+        uses: actions/upload-artifact@v4
+        with:
+          name: python-output
+          # File the script produces
+          path: scripts/qb-data.ts
+
   # Build job
   build:
+    needs: data_fetch
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+
+      # Download Python artifact before building
+      - name: Download Python artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: python-output
+          path: ./python-output
+
+      # File is now available at:
+      # ./python-output/qb-data.json
+      #
+      # If Next.js needs it in a specific place (e.g. public/data/),
+      # you can move or copy it:
+      - name: Move Python output into project
+        run: |
+          mkdir -p public/data
+          cp ./python-output/qb-data.json public/data/qb-data.json
+
       - name: Detect package manager
         id: detect-package-manager
         run: |
@@ -43,11 +90,13 @@ jobs:
             echo "Unable to determine package manager"
             exit 1
           fi
+
       - name: Setup Node
         uses: actions/setup-node@v4
         with:
           node-version: "22.16.0"
           cache: ${{ steps.detect-package-manager.outputs.manager }}
+
       - name: Setup Pages
         uses: actions/configure-pages@v5
         with:
@@ -56,6 +105,7 @@ jobs:
           #
           # You may remove this line if you want to manage the configuration yourself.
           static_site_generator: next
+
       - name: Restore cache
         uses: actions/cache@v4
         with:
@@ -66,10 +116,13 @@ jobs:
           # If source files changed but packages didn't, rebuild from a prior cache.
           restore-keys: |
             ${{ runner.os }}-nextjs-${{ hashFiles('**/package-lock.json', '**/yarn.lock') }}-
+
       - name: Install dependencies
         run: ${{ steps.detect-package-manager.outputs.manager }} ${{ steps.detect-package-manager.outputs.command }}
+
       - name: Build with Next.js
         run: ${{ steps.detect-package-manager.outputs.runner }} next build
+
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
