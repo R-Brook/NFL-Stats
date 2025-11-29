@@ -1,5 +1,7 @@
 import json
-from api_authorisation import api
+from api_authorisation import authorise_api
+
+api = authorise_api()
 
 def parse_teams():
   """
