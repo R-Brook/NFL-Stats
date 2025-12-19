@@ -52,7 +52,9 @@ jobs:
         with:
           name: python-output
           # File the script produces
-          path: scripts/team-data.ts
+          path: |
+            scripts/team-data.ts
+            scripts/qb-data.ts
 
   # Build job
   build:
@@ -77,6 +79,7 @@ jobs:
       - name: Move Python output into project
         run: |
           cp ./python-output/team-data.ts scripts/team-data.ts
+          cp ./python-output/qb-data.ts scripts/qb-data.ts
 
       - name: Detect package manager
         id: detect-package-manager
@@ -119,6 +122,10 @@ jobs:
 
       - name: Install dependencies
         run: ${{ steps.detect-package-manager.outputs.manager }} ${{ steps.detect-package-manager.outputs.command }}
+
+      - name: Verify generated data files
+        run: |
+          ls -l scripts
 
       - name: Build with Next.js
         run: ${{ steps.detect-package-manager.outputs.runner }} next build
