@@ -31,4 +31,4 @@ npm-debug.log*
 next-env.d.ts
 
 # script outputs
-/scripts/*.ts
+/scripts/generated-files/*.ts

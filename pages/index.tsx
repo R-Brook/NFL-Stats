@@ -1,5 +1,6 @@
-import { qbDataSeason } from "@/scripts/qb-data-season"
-import { teamData } from "@/scripts/team-data"
+import { qbDataSeason } from "@/scripts/generated-files/qb-data-season"
+import { qbDataWeekly } from "@/scripts/generated-files/qb-data-weekly"
+import { teamData } from "@/scripts/generated-files/team-data"
 import Head from "next/head"
 
 export default function Home() {
@@ -15,7 +16,14 @@ export default function Home() {
             {teamData ? "has fetched team data" : "has not fetched team data"}
           </span>
           <span className="block">
-            {qbDataSeason ? "has fetched QB data" : "has not fetched QB data"}
+            {qbDataSeason
+              ? "has fetched QB season data"
+              : "has not fetched QB data"}
+          </span>
+          <span className="block">
+            {qbDataWeekly
+              ? "has fetched QB weekly data"
+              : "has not fetched QB data"}
           </span>
         </div>
       </main>

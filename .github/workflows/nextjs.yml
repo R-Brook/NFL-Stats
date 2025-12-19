@@ -42,7 +42,8 @@ jobs:
 
       - name: Run Python script
         run: |
-          python scripts/fetch-team-data.py
+          python scripts/team_data.py
+          python scripts/qb_weekly.py
           python scripts/qb_season.py
 
       # Upload the file the script produced
@@ -52,8 +53,9 @@ jobs:
           name: python-output
           # File the script produces
           path: |
-            scripts/team-data.ts
-            scripts/qb-data.ts
+            scripts/generated-files/team-data.ts
+            scripts/generated-files/qb-data-weekly.ts
+            scripts/generated-files/qb-data-season.ts
 
   # Build job
   build:
@@ -70,15 +72,11 @@ jobs:
           name: python-output
           path: ./python-output
 
-      # File is now available at:
-      # ./python-output/team-data.ts
-      #
-      # If Next.js needs it in a specific place (e.g. public/data/),
-      # you can move or copy it:
       - name: Move Python output into project
         run: |
-          cp ./python-output/team-data.ts scripts/team-data.ts
-          cp ./python-output/qb-data.ts scripts/qb-data.ts
+          cp ./python-output/team-data.ts scripts/generated-files/team-data.ts
+          cp ./python-output/qb-data-weekly.ts scripts/generated-files/qb-data-weekly.ts
+          cp ./python-output/qb-data-season.ts scripts/generated-files/qb-data-season.ts
 
       - name: Detect package manager
         id: detect-package-manager
