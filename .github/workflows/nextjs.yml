@@ -42,6 +42,7 @@ jobs:
 
       - name: Run Python script
         run: |
+          set -e
           python scripts/team_data.py
           python scripts/qb_weekly.py
           python scripts/qb_season.py
@@ -74,9 +75,7 @@ jobs:
 
       - name: Move Python output into project
         run: |
-          cp ./python-output/team-data.ts scripts/generated-files/team-data.ts
-          cp ./python-output/qb-data-weekly.ts scripts/generated-files/qb-data-weekly.ts
-          cp ./python-output/qb-data-season.ts scripts/generated-files/qb-data-season.ts
+          cp -r ./python-output/* scripts/generated-files/
 
       - name: Detect package manager
         id: detect-package-manager
