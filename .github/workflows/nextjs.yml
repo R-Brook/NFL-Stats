@@ -1,5 +1,4 @@
 # Build and deploy a Next.js site to GitHub Pages
-#
 name: Deploy Next.js site to Pages
 
 on:
@@ -42,9 +41,9 @@ jobs:
           pip install -r requirements.txt
 
       - name: Run Python script
-        env:
-          BALLDONTLIEAPI_KEY: ${{ secrets.BALLDONTLIEAPI_KEY }}
-        run: python scripts/fetch-team-data.py
+        run: |
+          python scripts/fetch-team-data.py
+          python scripts/fetch-qb-data.py
 
       # Upload the file the script produced
       - name: Upload Python output
@@ -52,7 +51,9 @@ jobs:
         with:
           name: python-output
           # File the script produces
-          path: scripts/team-data.ts
+          path: |
+            scripts/team-data.ts
+            scripts/qb-data.ts
 
   # Build job
   build:
@@ -77,6 +78,7 @@ jobs:
       - name: Move Python output into project
         run: |
           cp ./python-output/team-data.ts scripts/team-data.ts
+          cp ./python-output/qb-data.ts scripts/qb-data.ts
 
       - name: Detect package manager
         id: detect-package-manager
@@ -119,6 +121,10 @@ jobs:
 
       - name: Install dependencies
         run: ${{ steps.detect-package-manager.outputs.manager }} ${{ steps.detect-package-manager.outputs.command }}
+
+      - name: Verify generated data files
+        run: |
+          ls -l scripts
 
       - name: Build with Next.js
         run: ${{ steps.detect-package-manager.outputs.runner }} next build

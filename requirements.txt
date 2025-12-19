@@ -1,2 +1,2 @@
-balldontlie
+nflreadpy
 python-dotenv
