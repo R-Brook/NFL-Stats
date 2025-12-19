@@ -43,7 +43,7 @@ jobs:
       - name: Run Python script
         run: |
           python scripts/fetch-team-data.py
-          python scripts/fetch-qb-data.py
+          python scripts/qb_season.py
 
       # Upload the file the script produced
       - name: Upload Python output
