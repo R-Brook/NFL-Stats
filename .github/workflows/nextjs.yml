@@ -60,6 +60,9 @@ jobs:
             scripts/generated-files/team-data.ts
             scripts/generated-files/qb-data-weekly.ts
             scripts/generated-files/qb-data-season.ts
+            scripts/generated-files/ngs-data-passing.ts
+            scripts/generated-files/ngs-data-receiving.ts
+            scripts/generated-files/ngs-data-rushing.ts
 
   # Build job
   build:
