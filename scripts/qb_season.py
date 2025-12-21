@@ -1,3 +1,8 @@
 from utils.fetch_qb_data import parse_qbs
 
-parse_qbs("reg", "qb_season", "qb-data-season", "qbDataSeason")
+SummaryLevel = "season"
+TriggerFileName = "qb_" + SummaryLevel
+OutputFileName = "qb-data-" + SummaryLevel
+OutputConstName = "qbData" + SummaryLevel.capitalize()
+
+parse_qbs("reg", TriggerFileName, OutputFileName, OutputConstName)

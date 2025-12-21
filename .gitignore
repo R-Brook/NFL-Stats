@@ -32,3 +32,8 @@ next-env.d.ts
 
 # script outputs
 /scripts/generated-files/*.ts
+
+# temporary
+/public/qb_test/*
+/public/images/players/*
+/public/qb_headshots 22.31.32/*

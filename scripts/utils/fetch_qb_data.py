@@ -2,8 +2,11 @@ import json
 import polars as pl
 import nflreadpy as nfl
 from pathlib import Path
+from typing import Literal
 
-def parse_qbs(summaryLevel, triggerFileName, outputFileName, outputConstName):
+ISummaryLevel = Literal["week", "reg", "post", "reg+post"]
+
+def parse_qbs(summaryLevel: ISummaryLevel, triggerFileName: str, outputFileName: str, outputConstName: str):
     """
     Fetch current-season QB stats and write them to scripts/qb-data.ts
     """

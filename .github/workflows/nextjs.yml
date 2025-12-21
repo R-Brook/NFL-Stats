@@ -4,7 +4,7 @@ name: Deploy Next.js site to Pages
 on:
   # Runs on pushes targeting the default branch
   push:
-    branches: ["main"]
+    # branches: ["main"]
 
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
@@ -43,9 +43,13 @@ jobs:
       - name: Run Python script
         run: |
           set -e
-          python scripts/team_data.py
-          python scripts/qb_weekly.py
-          python scripts/qb_season.py
+          python run_scripts.py
+          # python scripts/ngs_passing.py
+          # python scripts/ngs_receiving.py
+          # python scripts/ngs_rushing.py
+          # python scripts/qb_season.py
+          # python scripts/qb_weekly.py
+          # python scripts/team_data.py
 
       # Upload the file the script produced
       - name: Upload Python output
@@ -57,6 +61,9 @@ jobs:
             scripts/generated-files/team-data.ts
             scripts/generated-files/qb-data-weekly.ts
             scripts/generated-files/qb-data-season.ts
+            scripts/generated-files/ngs-data-passing.ts
+            scripts/generated-files/ngs-data-receiving.ts
+            scripts/generated-files/ngs-data-rushing.ts
 
   # Build job
   build:
