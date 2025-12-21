@@ -43,9 +43,12 @@ jobs:
       - name: Run Python script
         run: |
           set -e
-          python scripts/team_data.py
-          python scripts/qb_weekly.py
+          python scripts/ngs_passing.py
+          python scripts/ngs_receiving.py
+          python scripts/ngs_rushing.py
           python scripts/qb_season.py
+          python scripts/qb_weekly.py
+          python scripts/team_data.py
 
       # Upload the file the script produced
       - name: Upload Python output

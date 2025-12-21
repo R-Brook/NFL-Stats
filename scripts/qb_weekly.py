@@ -1,3 +1,8 @@
 from utils.fetch_qb_data import parse_qbs
 
-parse_qbs("week", "qb_weekly", "qb-data-weekly", "qbDataWeekly")
+SummaryLevel = "weekly"
+TriggerFileName = "qb_" + SummaryLevel
+OutputFileName = "qb-data-" + SummaryLevel
+OutputConstName = "qbData" + SummaryLevel.capitalize()
+
+parse_qbs("week", TriggerFileName, OutputFileName, OutputConstName)
