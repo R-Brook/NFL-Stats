@@ -6,7 +6,6 @@ from typing import Literal
 
 IStatType = Literal["passing", "receiving", "rushing"]
 
-
 def parse_ngs(statType: IStatType, outputFileName: str, variableName: str):
     """
     Fetch current-season next-gen stats and write them to a .ts file
