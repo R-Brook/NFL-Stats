@@ -1,3 +1,6 @@
+import { nGSStatsPassing } from "@/scripts/generated-files/ngs-data-passing"
+import { nGSStatsReceiving } from "@/scripts/generated-files/ngs-data-receiving"
+import { nGSStatsRushing } from "@/scripts/generated-files/ngs-data-rushing"
 import { qbDataSeason } from "@/scripts/generated-files/qb-data-season"
 import { qbDataWeekly } from "@/scripts/generated-files/qb-data-weekly"
 import { teamData } from "@/scripts/generated-files/team-data"
@@ -12,19 +15,14 @@ export default function Home() {
       <main>
         <div>
           <h1>NFL Stats</h1>
-          <span className="block">
-            {teamData ? "has fetched team data" : "has not fetched team data"}
-          </span>
-          <span className="block">
-            {qbDataSeason
-              ? "has fetched QB season data"
-              : "has not fetched QB data"}
-          </span>
-          <span className="block">
-            {qbDataWeekly
-              ? "has fetched QB weekly data"
-              : "has not fetched QB data"}
-          </span>
+          <ul>
+            <li>{teamData && "has fetched team data"}</li>
+            <li>{qbDataSeason && "has fetched QB season data"}</li>
+            <li>{qbDataWeekly && "has fetched QB weekly data"}</li>
+            <li>{nGSStatsPassing && "has fetched NGS passing"}</li>
+            <li>{nGSStatsReceiving && "has fetched NGS passing"}</li>
+            <li>{nGSStatsRushing && "has fetched NGS passing"}</li>
+          </ul>
         </div>
       </main>
     </div>
