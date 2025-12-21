@@ -43,7 +43,7 @@ jobs:
       - name: Run Python script
         run: |
           set -e
-          python scripts/run_scripts.py
+          python run_scripts.py
           # python scripts/ngs_passing.py
           # python scripts/ngs_receiving.py
           # python scripts/ngs_rushing.py
