@@ -34,6 +34,4 @@ next-env.d.ts
 /scripts/generated-files/*.ts
 
 # temporary
-/public/qb_test/*
-/public/images/players/*
-/public/qb_headshots 22.31.32/*
+/public/images/players/ignore/*
