@@ -1,4 +1,4 @@
-import { QBTOuchdowns } from "@/components/qb-touchdowns"
+import { QBTouchdowns } from "@/components/qb-touchdowns"
 import Head from "next/head"
 
 export default function Home() {
@@ -10,7 +10,7 @@ export default function Home() {
       <main>
         <h1>Quarterback Stats</h1>
         <section>
-          <QBTOuchdowns />
+          <QBTouchdowns />
         </section>
       </main>
     </div>
