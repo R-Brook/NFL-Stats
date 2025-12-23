@@ -30,8 +30,9 @@ npm-debug.log*
 *.tsbuildinfo
 next-env.d.ts
 
-# script outputs
+# scripts
 /scripts/generated-files/*.ts
+__pycache__/
 
 # temporary
 /public/images/players/ignore/*
