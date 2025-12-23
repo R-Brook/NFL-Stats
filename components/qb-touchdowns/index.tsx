@@ -26,7 +26,7 @@ export const QBTouchdowns = () => {
             <div className="w-20 h-20 block relative bg-white">
               <div className="relative min-w-10 w-full h-full">
                 <Image
-                  src={`/images/players/qbs/no-bg/${qb.player_name.replace(
+                  src={`./images/players/qbs/no-bg/${qb.player_name.replace(
                     ".",
                     ""
                   )}.png`}
