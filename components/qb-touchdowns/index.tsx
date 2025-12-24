@@ -1,5 +1,5 @@
 import Image from "next/image"
-import { qbDataSeason } from "@/scripts/generated-files/qb-data-season"
+import { qbDataSeason } from "@/scripts/weekly/generated-files/qb-data-season"
 import { getTeamColour } from "@/utils/get-team-info"
 
 export const QBTouchdowns = () => {

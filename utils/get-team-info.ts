@@ -1,4 +1,4 @@
-import { teamData } from "@/scripts/generated-files/team-data"
+import { teamData } from "@/scripts/weekly/generated-files/team-data"
 
 interface ITeamColours {
   primary: string

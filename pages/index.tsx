@@ -1,9 +1,9 @@
-import { nGSStatsPassing } from "@/scripts/generated-files/ngs-data-passing"
-import { nGSStatsReceiving } from "@/scripts/generated-files/ngs-data-receiving"
-import { nGSStatsRushing } from "@/scripts/generated-files/ngs-data-rushing"
-import { qbDataSeason } from "@/scripts/generated-files/qb-data-season"
-import { qbDataWeekly } from "@/scripts/generated-files/qb-data-weekly"
-import { teamData } from "@/scripts/generated-files/team-data"
+import { nGSStatsPassing } from "@/scripts/weekly/generated-files/ngs-data-passing"
+import { nGSStatsReceiving } from "@/scripts/weekly/generated-files/ngs-data-receiving"
+import { nGSStatsRushing } from "@/scripts/weekly/generated-files/ngs-data-rushing"
+import { qbDataSeason } from "@/scripts/weekly/generated-files/qb-data-season"
+import { qbDataWeekly } from "@/scripts/weekly/generated-files/qb-data-weekly"
+import { teamData } from "@/scripts/weekly/generated-files/team-data"
 import Head from "next/head"
 
 export default function Home() {

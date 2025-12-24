@@ -1,4 +1,4 @@
-from utils.fetch_qb_data import parse_qbs
+from scripts.utils.fetch_qb_data import parse_qbs
 
 SummaryLevel = "weekly"
 TriggerFileName = "qb_" + SummaryLevel

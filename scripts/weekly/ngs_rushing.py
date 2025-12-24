@@ -1,4 +1,4 @@
-from utils.fetch_ngs import parse_ngs
+from scripts.utils.fetch_ngs import parse_ngs
 
 StatType = "rushing"
 OutputFile = "ngs-data-" + StatType
