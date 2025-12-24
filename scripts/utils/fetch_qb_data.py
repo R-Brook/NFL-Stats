@@ -22,7 +22,7 @@ def parse_qbs(summaryLevel: ISummaryLevel, triggerFileName: str, outputFileName:
         )
 
         # Write the data to a TypeScript file
-        output_path = Path("scripts/generated-files") / f"{outputFileName}.ts"
+        output_path = Path("scripts/weekly/generated-files") / f"{outputFileName}.ts"
         output_path.parent.mkdir(parents=True, exist_ok=True)
 
         with open(output_path, "w", encoding="utf-8") as f:

@@ -12,7 +12,7 @@ def parse_teams():
         team_data = nfl.load_teams().to_dicts()
 
         # Write the data to a TypeScript file
-        output_path = Path("scripts/generated-files/team-data.ts")
+        output_path = Path("data/teams/team-data.ts")
         output_path.parent.mkdir(parents=True, exist_ok=True)
 
         with open(output_path, "w", encoding="utf-8") as f:

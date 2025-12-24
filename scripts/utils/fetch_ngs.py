@@ -15,7 +15,7 @@ def parse_ngs(statType: IStatType, outputFileName: str, variableName: str):
         player_stats = nfl.load_nextgen_stats(stat_type=statType).to_dicts()
 
         # Write the data to a TypeScript file
-        output_path = Path("scripts/generated-files") / f"{outputFileName}.ts"
+        output_path = Path("scripts/weekly/generated-files") / f"{outputFileName}.ts"
         output_path.parent.mkdir(parents=True, exist_ok=True)
 
         with open(output_path, "w", encoding="utf-8") as f:
